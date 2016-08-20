@@ -1,0 +1,26 @@
+filemanager --
+
+ 包括功能
+ 1、 搜索某个目录下所有文件，包含isp-log的文件和。。。tar。gz的解压缩
+ 2、  按照文件进行decode。
+ 
+ 
+ 成员变量
+ vector<string> files;			//第一次扫描所有目录的文件，主要为解压缩文件使用
+ vector<string> isplogFile;		//目标解析文件全路径(※※扩展性※※)
+ vector<string> hdcFiles		//目标戒心文件全路径 hdc.files
+ 
+ 函数
+ 1、 getfiles		获得所有文件，全路径，储存到vector<files>里
+ 2、 unzipFiles		针对打包的logfiles，需要解压出来分析。利用cmd命令，先移动winrar到windows目录（※※环境问题※※），再执行解压到各自文件夹
+ 3、 getIspFile		根据命令开关 	获得所有isp log，包括isp-log。1.2.3.等等的全路径，来分析dcc、pdaf、7cm. 	vector<string> isplogFile;
+ 4、 getHDCFiles	根据命令开关		获得所有hdc的log，来记录相机外参。vector<string> hdcFiles;
+ 5、 parseFiles		根据命令开关		使用正则表达式解析log文件，取得数据
+ 6、 saveData		写入对应excel表格
+ 
+ 
+要点
+1	excel与mfc建立联系，写入excel多个工作簿、不同格式的数据；
+2	正则表达式匹配，也即分析log文件；
+3	unicode的处理方式问题；
+4	
